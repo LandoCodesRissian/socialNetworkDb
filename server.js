@@ -1,23 +1,20 @@
 const express = require('express');
-const router = express.Router();
-const {
-getAllUsers,
-getUserById,
-createUser,
-updateUser,
-deleteUser,
-addFriend,
-removeFriend,
-} = require('../controllers/users');
+const mongoose = require('mongoose');
+const userRoutes = require('./routes/users');
+const thoughtRoutes = require('./routes/thoughts');
 
-// Define routes for User model
-router.get('/', getAllUsers);
-router.get('/:id', getUserById);
-router.post('/', createUser);
-router.put('/:id', updateUser);
-router.delete('/:id', deleteUser);
-router.post('/:userId/friends/:friendId', addFriend);
-router.delete('/:userId/friends/:friendId', removeFriend);
+const app = express();
+const PORT = process.env.PORT || 3001;
 
-// exporting user routes
-module.exports = router;
+app.use(express.json());
+
+mongoose.connect('mongodb://127.0.0.1:27017/social-network');
+
+// routes
+app.use('/api/users', userRoutes);
+app.use('/api/thoughts', thoughtRoutes);
+
+// Console.log telling user what server we are running off of
+app.listen(PORT, () => {
+console.log(`Server running on http://localhost:${PORT}`);
+});
