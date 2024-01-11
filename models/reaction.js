@@ -29,5 +29,7 @@ reactionSchema.virtual('formattedCreatedAt').get(function () {
 return this.createdAt.toISOString();
 });
 
+const Reaction = mongoose.model('Reaction', reactionSchema);
+
 // exporting the reaction schema
-module.exports = reactionSchema;
+module.exports = Reaction;
