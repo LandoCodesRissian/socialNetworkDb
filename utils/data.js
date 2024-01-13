@@ -27,17 +27,6 @@ const names = [
     'Zane',
   ];
   
-  // Get a random item given an array
-  const getRandomArrItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
-  
-  // Gets a random full name
-  const getRandomName = () =>
-    `${getRandomArrItem(names)} ${getRandomArrItem(names)}`;
-
-    // Function to generate random email address
-const getRandomEmail = () =>
-`${getRandomArrItem(names).toLowerCase()}@example.com`;
-
   // Sample thought texts
   const thoughtTexts = [
     'Just had an amazing dinner with friends!',
@@ -52,9 +41,38 @@ const getRandomEmail = () =>
     'Trying out a new recipe. Hope it turns out well!',
     'Exploring new hiking trails. Nature therapy!',
   ];
+  const reactionData = [
+    "hello",
+    "goodbye",
+    "touchdown",
+    "why did saban retire",
+    "really!",
+    "if you say so",
+    "whatever",
+    "situationship",
+    "come on now",
+    "coding",
+  ];
   
-  // Get a random thought text
-  const getRandomThoughtText = () => getRandomArrItem(thoughtTexts);
+  const users = [];
   
-  module.exports = { getRandomName, getRandomThoughtText, getRandomEmail };
+  // Get a random item given an array
+  const getRandomArrItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
+  
+  // Gets a random user name
+  const getRandomUserName = () =>
+    `${getRandomArrItem(names)}${getRandomArrItem(names)}`;
+  
+  // Gets a random thought
+  const getRandomThought = () => `${getRandomArrItem(thoughtData)}`;
+  
+  // Gets a random reaction
+  const getRandomReaction = () => `${getRandomArrItem(reactionData)}`;
+  
+  // Export the functions for use in seed.js
+  module.exports = {
+    getRandomUserName,
+    getRandomThought,
+    getRandomReaction,
+  };
   
